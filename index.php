@@ -8,4 +8,4 @@ function dividir($numero) {
     }
 }
 
-dividir(200);
+dividir(100);
