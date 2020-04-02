@@ -1,0 +1,35 @@
+<html>
+    <head>
+    <meta charset="utf-8" />
+    
+    <script>
+        let salarioBruto = 5000;
+        let descontos = 0;
+        getSalario(salarioBruto, (dedução) => {
+        console.log(descontos)
+        console.log(`O salário liquido é ${salarioBruto - dedução}`);
+        });
+        function getSalario(salarioBruto, callback) {
+        return callback(descontos += valorImposto(salarioBruto, 0.06, function (val) {
+            console.log(`O valor de VT é de ${val}`);
+            return val + valorImposto(salarioBruto, 0.15, function (val) {
+            console.log(`O valor de FGTS é de ${val}`);
+            return val + valorImposto(salarioBruto, 0.05, function (val) {
+                console.log(`O valor de VR é de ${val}`);
+                return val + valorImposto(salarioBruto, 0.11, function (val) {
+                console.log(`O valor de INSS é de ${val}`);
+                return val;
+                });
+            });
+            });
+        }))
+        }
+        function valorImposto(valorTotal, aliquota, callback) {
+        const desconto = valorTotal * aliquota;
+        return callback(desconto);
+        }
+    </script>
+    </head>
+    <body>
+    </body>
+</html>
